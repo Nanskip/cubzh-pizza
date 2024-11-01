@@ -10,7 +10,7 @@
 joysticks = {}
 
 joysticks.INIT = function(self)
-    return
+    return true
 end
 
 joysticks.create = function(config)
