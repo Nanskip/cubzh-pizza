@@ -8,12 +8,19 @@ Config = {
 
 function Client.OnStart()
     _DEBUG = true
-    _HASH = "25c209b"
+    _HASH = "c210469"
     _LATEST_LINK = "https://raw.githubusercontent.com/Nanskip/cubzh-pizza/" .. _HASH .. "/"
     _LOGS = {}
 
     _DOWNLOAD_DATA()
 end
+
+modules = {
+    save = "modules/save.lua",
+    map = "modules/map.lua",
+    player = "modules/player.lua",
+    joysticks = "modules/joysticks.lua",
+}
 
 log = function(text, type)
     if _DEBUG == true then
@@ -62,12 +69,6 @@ function _DOWNLOAD_DATA()
 end
 
 function _DOWNLOAD_MODULES()
-    local modules = {
-        save = "modules/save.lua",
-        map = "modules/map.lua",
-        player = "modules/player.lua",
-        joysticks = "modules/joysticks.lua",
-    }
     local downloaded = 0
     log("Need to download " .. tableLength(modules) .. " modules files.")
 
@@ -80,20 +81,27 @@ function _DOWNLOAD_MODULES()
             end
 
             _ENV[k] = load(response.Body:ToString(), nil, "bt", _ENV)()
-            if _ENV[k].INIT ~= nil then
-                local initialized = _ENV[k]:INIT()
-                if initialized then
-                    log(k, "INIT")
-                else
-                    log("Module [" .. k .. ".lua] initialization error.", "ERROR")
-                end
-            end
+            log("Module [".. k.. ".lua] downloaded.")
 
             downloaded = downloaded + 1
             if downloaded == tableLength(modules) then
                 log("Downloaded all required modules.")
+                _INIT_MODULES()
             end
         end)
+    end
+end
+
+function _INIT_MODULES()
+    for k, v in pairs(modules) do
+        if _ENV[k].INIT ~= nil then
+            local initialized = _ENV[k]:INIT()
+            if initialized then
+                log(k, "INIT")
+            else
+                log("Module [" .. k .. ".lua] initialization error.", "ERROR")
+            end
+        end
     end
 end
 

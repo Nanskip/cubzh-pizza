@@ -77,7 +77,6 @@ joysticks.create = function(config)
 
     joystick.Tick = function(self)
         if self.shape ~= nil and self.stick ~= nil then
-            self.loaded = true
             self.Tick = nil
             self:onLoad()
         end
@@ -86,9 +85,6 @@ joysticks.create = function(config)
     joystick.setPos = function(self, pos)
         if self == "Number2" then
             error("joystick.setPos() should be called with ':'!")
-        end
-        if not self.loaded then
-            error("joystick:setPos(pos) - joystick not loaded yet.")
         end
 
         self.shape.pos = pos
@@ -99,9 +95,6 @@ joysticks.create = function(config)
     joystick.setScale = function(self, scale)
         if self == "number" or self == "integer" then
             error("joystick.setScale(scale) should be called with ':'!")
-        end
-        if not self.loaded then
-            error("joystick:setScale(scale) - joystick not loaded yet.")
         end
 
         self.config.scale = scale
