@@ -34,11 +34,12 @@ function interface.UPDATE(self)
     end
 
     for i=-1, 1 do
-        local ray = Ray(Camera.Position, Camera.Rotation * Rotation(0.2*i, 0, -0.1))
+        local ray = Ray(Camera.Position, Camera.Forward + Camera.Left*0.1 + Camera.Up*i*0.1)
         local impact = ray:Cast({1, 2})
         if impact.Block ~= nil then
             print(impact.Block)
         end
+        print(impact.Object)
     end
 end
 

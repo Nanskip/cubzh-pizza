@@ -60,7 +60,7 @@ function map.create_room(self, position, scale, type)
     room.floor.Rotation.X = math.pi/2
     room.floor.Position = Number3(position[1], 0, position[2])*16 + Number3(0, 0.51, 0)
     room.floor.Scale = Number3(scale[1], scale[2], 1)*16
-    room.floor.CollisionGroups = {1, 2}
+    room.floor.CollisionGroups = {3}
 
     room.Remove = function(self)
         for x=1, #self.floors do
