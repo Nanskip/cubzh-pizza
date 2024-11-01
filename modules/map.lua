@@ -53,6 +53,7 @@ function map.create_room(self, position, scale, type)
             room.floors[x][y].Scale = 1/2
             room.floors[x][y]:SetParent(World)
             room.floors[x][y].CollisionGroups = {2}
+            room.floors[x][y].PhysicsMode = PhysicsMode.StaticPerBlock
         end
     end
     room.floor = Quad()
