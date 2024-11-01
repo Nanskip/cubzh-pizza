@@ -78,7 +78,8 @@ map.create_object = function(self, object, config)
     obj.button.Position = Number3(config.position[1], 0, config.position[2])*16 + Number3(0, 0.51, 0)
     obj.button.Scale = 16
 
-    obj.button.text = Text(object.name)
+    obj.button.text = Text()
+    obj.button.text.Text = object.name
     obj.button.text:SetParent(World)
     obj.button.text.Position = Number3(config.position[1]+0.75, 0, config.position[2]+0.5)*16 + Number3(0, 0.52, 0)
     obj.button.text.Color = Color(0, 0, 0)
@@ -87,7 +88,8 @@ map.create_object = function(self, object, config)
     obj.button.text.Rotation.X = math.pi/2
 
     obj.cost = {}
-    obj.cost.text = Text("0/"..object.cost)
+    obj.cost.text = Text()
+    obj.cost.text.Text = "0/"..object.cost
     obj.cost.text:SetParent(World)
     obj.cost.text.Position = Number3(config.position[1]+0.5, 0, config.position[2]+0.5)*16 + Number3(0, 0.52, 0)
     obj.cost.text.Color = Color(0, 0, 0)
@@ -97,6 +99,7 @@ map.create_object = function(self, object, config)
 
     obj.cost.coin = Shape(Items.voxels.pezh_coin)
     obj.cost.coin:SetParent(World)
+    obj.cost.coin.Pivot = Number3(obj.cost.coin.Width/2, 0.5, obj.cost.coin.Depth/2)
     obj.cost.coin.Position = Number3(config.position[1]+0.25, 0, config.position[2]+0.5)*16 + Number3(0, 0.52, 0)
     obj.cost.coin.Scale = Number3(0.5, 0.1, 0.5)
 
