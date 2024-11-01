@@ -162,7 +162,7 @@ end
 
 map.INIT_ROOMS = function(self)
     for key, value in pairs(self.rooms) do
-        self:create_room(value.position, value.scale, value.type)
+        map._ROOMS[key] = self:create_room(value.position, value.scale, value.type)
         for i=1, #value.objects do
             self:create_object(value.objects[i].object, value.objects[i].config)
         end
