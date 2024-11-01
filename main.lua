@@ -8,7 +8,7 @@ Config = {
 
 function Client.OnStart()
     _DEBUG = true
-    _HASH = "096adc3"
+    _HASH = "88edcd7"
     _LATEST_LINK = "https://raw.githubusercontent.com/Nanskip/cubzh-pizza/" .. _HASH .. "/"
     _LOGS = {}
 
@@ -20,6 +20,8 @@ modules = {
     map = "modules/map.lua",
     player = "modules/player.lua",
     joysticks = "modules/joysticks.lua",
+    interface = "modules/interface.lua",
+    game = "game.lua",
 }
 
 log = function(text, type)
@@ -104,6 +106,9 @@ function _INIT_MODULES()
             end
         end
     end
+
+    log("Module initialization completed.")
+    game:START()
 end
 
 function tableLength(t)
@@ -146,9 +151,13 @@ end
 function rotate45(xy)
     local x = xy[1]
     local y = xy[2]
-    
+
     local sqrt2_div_2 = math.sqrt(2) / 2
-    local newX = sqrt2_div_2 * (x - y)
-    local newY = sqrt2_div_2 * (x + y)
+    local newX = sqrt2_div_2 * (x + y)
+    local newY = sqrt2_div_2 * (y - x)
     return {newX, newY}
 end
+
+Client.DirectionalPad = nil
+Client.AnalogPad = nil
+Pointer.Drag = nil

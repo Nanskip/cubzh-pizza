@@ -11,12 +11,16 @@ end
 
 player.spawn = function(self)
     Player:SetParent(World)
+    Player.ShadowCookie = 0
     Player.Tick = function(s)
         s.Position.Y = 0.5
         local dir = rotate45({player.joystick:getValues().X, player.joystick:getValues().Y})
-        s.Velocity = Number3(dir[1], 0, dir[2])*10
+        s.Motion = Number3(dir[1], 0, dir[2])*10
+        if dir[1] ~= 0 or dir[2] ~= 0 then
+            s.Forward = Number3(dir[1], 0, dir[2])*50
+        end
 
-        Camera.Position = Player.Position + Number3(-50, 60, -50)
+        Camera.Position = Player.Position + Number3(-50, 70, -50)
     end
 end
 

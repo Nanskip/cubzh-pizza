@@ -28,7 +28,7 @@ function map.create_room(self, position, scale, type)
     end
     room.floor = Quad()
     room.floor:SetParent(World)
-    room.floor.Color = Color(255, 255, 255, 30)
+    room.floor.Color = Color(255, 255, 255, 0)
     room.floor.Rotation.X = math.pi/2
     room.floor.Position = Number3(position[1], 0, position[2])*16 + Number3(0, 0.51, 0)
     room.floor.Scale = Number3(scale[1], scale[2], 1)*16
