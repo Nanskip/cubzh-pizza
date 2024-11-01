@@ -8,11 +8,15 @@ Config = {
 
 function Client.OnStart()
     _DEBUG = true
-    _HASH = "9385d45"
+    _HASH = "755b74a"
     _LATEST_LINK = "https://raw.githubusercontent.com/Nanskip/cubzh-pizza/" .. _HASH .. "/"
     _LOGS = {}
 
     _DOWNLOAD_DATA()
+end
+
+function Client.Tick(dt)
+    _DELTA_TIME = 60*dt
 end
 
 modules = {
