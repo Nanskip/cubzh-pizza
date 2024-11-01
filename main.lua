@@ -8,7 +8,7 @@ Config = {
 
 function Client.OnStart()
     _DEBUG = true
-    _HASH = "c210469"
+    _HASH = "096adc3"
     _LATEST_LINK = "https://raw.githubusercontent.com/Nanskip/cubzh-pizza/" .. _HASH .. "/"
     _LOGS = {}
 
@@ -93,6 +93,7 @@ function _DOWNLOAD_MODULES()
 end
 
 function _INIT_MODULES()
+    log("Initializing modules...")
     for k, v in pairs(modules) do
         if _ENV[k].INIT ~= nil then
             local initialized = _ENV[k]:INIT()
@@ -140,4 +141,14 @@ function easeOutBack(start, end_, percentage)
     local easedValue = 1 + c3 * ((x - 1)^3) + c1 * ((x - 1)^2)
     
     return start + (end_ - start) * easedValue
+end
+
+function rotate45(xy)
+    local x = xy[1]
+    local y = xy[2]
+    
+    local sqrt2_div_2 = math.sqrt(2) / 2
+    local newX = sqrt2_div_2 * (x - y)
+    local newY = sqrt2_div_2 * (x + y)
+    return {newX, newY}
 end
