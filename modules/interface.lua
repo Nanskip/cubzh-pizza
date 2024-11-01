@@ -99,7 +99,7 @@ function interface.UPDATE_SIDES(self)
     )
     self.etc.screen_right.Color = { gradient="H", from=rightColor, to=Color(68, 68, 68)}
     self.etc.screen_right.Width, self.etc.screen_right.Height = (Screen.Width-Screen.Height*0.5625)/2, Screen.Height
-    self.etc.screen_right.pos = Number2(Screen.Width - self.etc.screen_right.Width)
+    self.etc.screen_right.pos = Number2(Screen.Width - self.etc.screen_right.Width, 0)
 end
 
 return interface
