@@ -93,9 +93,8 @@ joysticks.create = function(config)
         self.shape.Height = 160*self.config.scale
         self.stick.Width = 64*self.config.scale
         self.stick.Height = 64*self.config.scale
-        self.shape.pos = pos
-        self.stick.pos.X = pos.X + 48 * self.config.scale
-        self.stick.pos.Y = pos.Y + 48 * self.config.scale
+        self.stick.pos.X = self.shape.pos.X + 48 * self.config.scale
+        self.stick.pos.Y = self.shape.pos.Y + 48 * self.config.scale
     end
 
     joystick.getValues = function(self)
