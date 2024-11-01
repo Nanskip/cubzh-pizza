@@ -4,6 +4,34 @@ function map.INIT(self)
     return true
 end
 
+map.objects = {
+    test = {
+        name = "Test",
+        cost = 50,
+        shape = Items.voxels.toxic_barrel,
+        action = function(self)
+            log("Test Object triggered!")
+        end
+    }
+}
+
+map.rooms = {
+    main = {
+        position = {0, 0},
+        scale = {7, 10},
+        type = "main",
+        
+        objects = {
+            {
+                object = map.objects.test,
+                config = {
+                    position = {3, 3},
+                }
+            }
+        }
+    }
+}
+
 function map.create_room(self, position, scale, type)
     local room = {}
     if position == nil then
@@ -130,15 +158,13 @@ map.create_object = function(self, object, config)
     return obj
 end
 
-map.objects = {
-    test = {
-        name = "Test",
-        cost = 50,
-        shape = Items.voxels.toxic_barrel,
-        action = function(self)
-            log("Test Object triggered!")
+map.INIT_ROOMS = function(self)
+    for key, value in pairs(self.rooms) do
+        self:create_room(value.position, value.scale, value.type)
+        for i=1, #value.objects do
+            self:create_object(value.objects[i].object, value.objects[i].config)
         end
-    }
-}
+    end
+end
 
 return map

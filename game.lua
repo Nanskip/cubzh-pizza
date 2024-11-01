@@ -6,6 +6,8 @@ end
 
 game.START = function(self)
     interface:CREATE()
+    map:INIT_ROOMS()
+    player:spawn()
 
     log("Game started!")
 end
