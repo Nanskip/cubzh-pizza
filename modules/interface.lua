@@ -42,7 +42,11 @@ function interface.UPDATE(self)
         local ray = Ray(Camera.Position, Camera.Forward + Camera.Left*0.1 + Camera.Up*i*0.1)
         local impact = ray:Cast({1, 2})
         if impact.Block.Color ~= nil then
-            self.etc.leftColors[i+2] = Color(lerp(self.etc.leftColors[i+2].R, impact.Block.Color.R, 0.1), lerp(self.etc.leftColors[i+2].G, impact.Block.Color.G, 0.1))
+            self.etc.leftColors[i+2] = Color(
+                lerp(self.etc.leftColors[i+2].R, impact.Block.Color.R, 0.1),
+                lerp(self.etc.leftColors[i+2].G, impact.Block.Color.G, 0.1),
+                lerp(self.etc.leftColors[i+2].B, impact.Block.Color.B, 0.1)
+            )
         end
     end
 
