@@ -52,6 +52,7 @@ function map.create_room(self, position, scale, type)
             room.floors[x][y].Position = (Number3(position[1], 0, position[2]) + Number3(x-1, 0, y-1))*16
             room.floors[x][y].Scale = 1/2
             room.floors[x][y]:SetParent(World)
+            room.floors[x][y].CollisionGroups = {2}
         end
     end
     room.floor = Quad()
