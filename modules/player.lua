@@ -13,7 +13,7 @@ player.spawn = function(self)
     Player:SetParent(World)
     Player.Tick = function(s)
         s.Position.Y = 0.5
-        s.Velocity.Y = Number3(player.joystick:getValues()[1], 0, player.joystick:getValues()[2])
+        s.Velocity.Y = Number3(player.joystick:getValues().X, 0, player.joystick:getValues().Y)
 
         Camera.Position = Player.Position + Number3(-50, 60, -50)
     end
