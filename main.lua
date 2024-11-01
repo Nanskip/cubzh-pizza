@@ -8,7 +8,7 @@ Config = {
 
 function Client.OnStart()
     _DEBUG = true
-    _HASH = "cc316ba"
+    _HASH = "25c209b"
     _LATEST_LINK = "https://raw.githubusercontent.com/Nanskip/cubzh-pizza/" .. _HASH .. "/"
     _LOGS = {}
 

@@ -9,6 +9,10 @@
 
 joysticks = {}
 
+joysticks.INIT = function(self)
+    return
+end
+
 joysticks.create = function(config)
     local defaultConfig = {
         pos = {0, 0},
@@ -33,7 +37,7 @@ joysticks.create = function(config)
     joystick.config = config
 
     if joystick ~= nil then
-        joystick.shape = ui:createShape(Items.nanskip.joystick)
+        joystick.shape = ui:createShape(Shape(Items.nanskip.joystick))
         joystick.shape.shape.Palette[1].Color = joystick.config.borderColor
         joystick.shape.shape.Palette[2].Color = joystick.config.color
 
@@ -44,7 +48,7 @@ joysticks.create = function(config)
     end
 
     if joystick ~= nil then
-        joystick.stick = ui:createShape(Items.nanskip.joystick_stick)
+        joystick.stick = ui:createShape(Shape(Items.nanskip.joystick_stick))
         joystick.stick.shape.Palette[1].Color = joystick.config.borderColor
         joystick.stick.shape.Palette[2].Color = joystick.config.color
         joystick.stick.fakepos = Number2(0, 0)
