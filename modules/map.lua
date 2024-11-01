@@ -161,8 +161,9 @@ map.create_object = function(self, object, config)
 end
 
 map.INIT_ROOMS = function(self)
+    self._ROOMS = {}
     for key, value in pairs(self.rooms) do
-        map._ROOMS[key] = self:create_room(value.position, value.scale, value.type)
+        self._ROOMS[key] = self:create_room(value.position, value.scale, value.type)
         for i=1, #value.objects do
             self:create_object(value.objects[i].object, value.objects[i].config)
         end
