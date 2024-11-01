@@ -1,10 +1,12 @@
 local game = {}
 
 game.INIT = function(self)
-    return
+    return true
 end
 
 game.START = function(self)
+    interface:CREATE()
+
     log("Game started!")
 end
 
