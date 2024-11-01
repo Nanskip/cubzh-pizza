@@ -13,10 +13,15 @@ function interface.CREATE(self)
         self:UPDATE()
     end
 
-    local etc = {}
-    etc.screen_left = ui:createFrame()
-    etc.screen_left.Color = { gradient="H", from=Color(255, 255, 255), to=Color(255, 255, 255)}
-    etc.screen_right = ui:createFrame()
+    self.etc = {}
+    self.etc.screen_left = ui:createFrame()
+    self.etc.leftColors = {
+        Color(255, 255, 255),
+        Color(255, 255, 255),
+        Color(255, 255, 255),
+    }
+    self.etc.screen_left.Color = { gradient="H", from=Color(255, 255, 255), to=Color(255, 255, 255)}
+    self.etc.screen_right = ui:createFrame()
 
     self:UPDATE()
 end
@@ -36,8 +41,18 @@ function interface.UPDATE(self)
     for i=-1, 1 do
         local ray = Ray(Camera.Position, Camera.Forward + Camera.Left*0.1 + Camera.Up*i*0.1)
         local impact = ray:Cast({1, 2})
-        print(impact.Block)
+        if impact.Block.Color ~= nil then
+            self.etc.leftColors[i+2] = Color(lerp(self.etc.leftColors[i+2].R, impact.Block.Color.R, 0.1), lerp(self.etc.leftColors[i+2].G, impact.Block.Color.G, 0.1))
+        end
     end
+
+    local leftColor = Color(
+        math.floor((self.etc.leftColors[1].R + self.etc.leftColors[2].R + self.etc.leftColors[3].R)/3),
+        math.floor((self.etc.leftColors[1].G + self.etc.leftColors[2].G + self.etc.leftColors[3].G)/3),
+        math.floor((self.etc.leftColors[1].B + self.etc.leftColors[2].B + self.etc.leftColors[3].B)/3)
+    )
+    self.etc.screen_left.Color = { gradient="H", from=Color(68, 68, 68), to=leftColor}
+    self.etc.screen_left.Width, self.etc.screen_left.Height = 100, 100
 end
-Pointer.Down = function( pointerEvent ) local ray = Ray(pointerEvent.Position, pointerEvent.Direction) local impact = ray:Cast({1, 2}) if impact.Block ~= nil then print("block hit:", impact.Block) end end
+
 return interface
