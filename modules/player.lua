@@ -2,7 +2,7 @@ local player = {}
 
 player.INIT = function(self)
     self.joystick = joysticks.create()
-    self.joystick:setPos(Screen.Width / 2, Screen.Height / 2)
+    self.joystick:setPos(Number2(Screen.Width / 2, Screen.Height / 2))
 
     return true
 end
