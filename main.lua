@@ -1,13 +1,13 @@
 Config = {
     Map = nil,
     Items = {
-        "voxels.oak_floor",
+        "voxels.oak_floor", "voxels.toxic_barrel"
     }
 }
 
 function Client.OnStart()
     _DEBUG = true
-    _HASH = "07f5600"
+    _HASH = "90cb207"
     _LATEST_LINK = "https://raw.githubusercontent.com/Nanskip/cubzh-pizza/" .. _HASH .. "/"
     _LOGS = {}
 
@@ -115,4 +115,8 @@ function deepcopy(orig)
         copy = orig
     end
     return copy
+end
+
+function lerp(a,b,t)
+    return a * (1-t) + b * t
 end
