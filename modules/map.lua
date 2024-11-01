@@ -127,6 +127,7 @@ map.create_object = function(self, object, config)
 
     obj.cost.coin = Shape(Items.voxels.pezh_coin)
     obj.cost.coin:SetParent(World)
+    obj.cost.coin.Physics = PhysicsMode.Disabled
     obj.cost.coin.Pivot = Number3(obj.cost.coin.Width/2, 0.5, obj.cost.coin.Depth/2)
     obj.cost.coin.Position = Number3(config.position[1]+0.5, 0, config.position[2]+0.25)*16 + Number3(0, 0.52, 0)
     obj.cost.coin.Scale = Number3(0.25, 0.1, 0.25)

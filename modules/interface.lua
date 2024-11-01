@@ -19,6 +19,7 @@ function interface.UPDATE(self)
         player.joystick:setScale(2*SCREEN_MUL)
         player.joystick:setPos(Number2(Screen.Width/2 - player.joystick.shape.Width/2, Screen.Height/6 - player.joystick.shape.Height/2))
     end
+    Camera.Position = Player.Position + Number3(-50, 70, -50)
 end
 
 return interface
