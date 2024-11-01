@@ -1,13 +1,14 @@
 Config = {
     Map = nil,
     Items = {
-        "voxels.oak_floor", "voxels.toxic_barrel", "voxels.pezh_coin"
+        "voxels.oak_floor", "voxels.toxic_barrel", "voxels.pezh_coin",
+        "nanskip.joystick", "nanskip.joystick_stick",
     }
 }
 
 function Client.OnStart()
     _DEBUG = true
-    _HASH = "a031f69"
+    _HASH = "cc316ba"
     _LATEST_LINK = "https://raw.githubusercontent.com/Nanskip/cubzh-pizza/" .. _HASH .. "/"
     _LOGS = {}
 
@@ -64,6 +65,8 @@ function _DOWNLOAD_MODULES()
     local modules = {
         save = "modules/save.lua",
         map = "modules/map.lua",
+        player = "modules/player.lua",
+        joysticks = "modules/joysticks.lua",
     }
     local downloaded = 0
     log("Need to download " .. tableLength(modules) .. " modules files.")
@@ -119,4 +122,14 @@ end
 
 function lerp(a,b,t)
     return a * (1-t) + b * t
+end
+
+function easeOutBack(start, end_, percentage)
+    local c1 = 1.70158
+    local c3 = c1 + 1
+    local x = percentage / 100
+
+    local easedValue = 1 + c3 * ((x - 1)^3) + c1 * ((x - 1)^2)
+    
+    return start + (end_ - start) * easedValue
 end

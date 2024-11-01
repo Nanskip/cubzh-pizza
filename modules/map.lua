@@ -104,16 +104,16 @@ map.create_object = function(self, object, config)
     obj.cost.coin.Scale = Number3(0.25, 0.1, 0.25)
 
     obj.purchase = function(self)
-        for i=1, 30 do
+        for i=1, 60 do
             Timer(0.016*i, false, function()
-                self.shape.Position.Y = lerp(self.shape.Position.Y, 0, 0.3)
-                self.button.text.Color.A = math.floor(lerp(self.button.text.Color.A, 0, 0.03))
-                self.button.Color.A = math.floor(lerp(self.button.Color.A, 0, 0.03))
-                self.cost.text.Color.A = math.floor(lerp(self.cost.text.Color.A, 0, 0.03))
-                self.cost.coin.Position.Y = lerp(self.cost.coin.Position.Y, -32, 0.3)
+                self.shape.Position.Y = easeOutBack(-32, 0, i*1.667)
+                self.button.text.Color.A = math.floor(lerp(self.button.text.Color.A, 0, 0.04))
+                self.button.Color.A = math.floor(lerp(self.button.Color.A, 0, 0.04))
+                self.cost.text.Color.A = math.floor(lerp(self.cost.text.Color.A, 0, 0.04))
+                self.cost.coin.Position.Y = lerp(self.cost.coin.Position.Y, -32, 0.05)
             end)
         end
-        Timer(0.51, false, function()
+        Timer(1.01, false, function()
             self.shape.Position.Y = 0
             self.button.text:SetParent(nil)
             self.button.text = nil
