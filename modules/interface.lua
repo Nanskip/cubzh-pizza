@@ -43,9 +43,9 @@ function interface.UPDATE(self)
         local impact = ray:Cast({1, 2})
         if impact.Block.Color ~= nil then
             self.etc.leftColors[i+2] = Color(
-                lerp(self.etc.leftColors[i+2].R, impact.Block.Color.R, 0.1),
-                lerp(self.etc.leftColors[i+2].G, impact.Block.Color.G, 0.1),
-                lerp(self.etc.leftColors[i+2].B, impact.Block.Color.B, 0.1)
+                math.floor(lerp(self.etc.leftColors[i+2].R, impact.Block.Color.R, 0.1)),
+                math.floor(lerp(self.etc.leftColors[i+2].G, impact.Block.Color.G, 0.1)),
+                math.floor(lerp(self.etc.leftColors[i+2].B, impact.Block.Color.B, 0.1))
             )
         end
     end
