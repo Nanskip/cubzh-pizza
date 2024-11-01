@@ -28,6 +28,7 @@ function map.create_room(self, position, scale, type)
     end
     room.floor = Quad()
     room.floor:SetParent(World)
+    room.floor.Color = Color(255, 255, 255, 30)
     room.floor.Rotation.X = math.pi/2
     room.floor.Position = Number3(position[1], 0, position[2])*16 + Number3(0, 0.51, 0)
     room.floor.Scale = Number3(scale[1], scale[2], 1)*16
@@ -65,7 +66,8 @@ map.create_object = function(self, object, config)
 
     obj.shape = Shape(object.shape)
     obj.shape:SetParent(World)
-    obj.shape.Position = Number3(config.position[1], 0, config.position[2])*16 + Number3(0, -32, 0)
+    obj.shape.Position = Number3(config.position[1]+0.5, 0, config.position[2]+0.5)*16 + Number3(0, -32, 0)
+    obj.shape.Pivot = Number3(obj.shape.Width/2, 0, obj.shape.Depth/2)
     obj.shape.Scale = config.scale
     obj.shape.Rotation = config.rotation
     obj.shape.Physics = config.collision
@@ -76,26 +78,53 @@ map.create_object = function(self, object, config)
     obj.button.Position = Number3(config.position[1], 0, config.position[2])*16 + Number3(0, 0.51, 0)
     obj.button.Scale = 16
 
-    obj.button.text = Text(config.name)
-    obj.button.text:SetParent(obj.button)
-    obj.button.text.Position = Number3(config.position[1], 0, config.position[2])*16 + Number3(0, 0.52, 0)
+    obj.button.text = Text(object.name)
+    obj.button.text:SetParent(World)
+    obj.button.text.Position = Number3(config.position[1]+0.75, 0, config.position[2]+0.5)*16 + Number3(0, 0.52, 0)
     obj.button.text.Color = Color(0, 0, 0)
+    obj.button.text.BackgroundColor = Color(0, 0, 0, 0)
+    obj.button.text.Scale = 1.5
+    obj.button.text.Rotation.X = math.pi/2
+
+    obj.cost = {}
+    obj.cost.text = Text("0/"..object.cost)
+    obj.cost.text:SetParent(World)
+    obj.cost.text.Position = Number3(config.position[1]+0.5, 0, config.position[2]+0.5)*16 + Number3(0, 0.52, 0)
+    obj.cost.text.Color = Color(0, 0, 0)
+    obj.cost.text.BackgroundColor = Color(0, 0, 0, 0)
+    obj.cost.text.Scale = 1
+    obj.cost.text.Rotation.X = math.pi/2
+
+    obj.cost.coin = Shape(Items.voxels.coin)
+    obj.cost.coin:SetParent(World)
+    obj.cost.coin.Position = Number3(config.position[1]+0.25, 0, config.position[2]+0.5)*16 + Number3(0, 0.52, 0)
+    obj.cost.coin.Scale = Number3(0.5, 0.1, 0.5)
 
     obj.purchase = function(self)
         for i=1, 30 do
             Timer(0.016*i, false, function()
-                self.shape.Position.Y = lerp(self.shape.Position.Y, 0, 0.1)
-                self.button.text.Color.A = lerp(self.button.text.Color.A, 0, 0.01)
-                self.button.Color.A = lerp(self.button.Color.A, 0, 0.01)
+                self.shape.Position.Y = lerp(self.shape.Position.Y, 0, 0.3)
+                self.button.text.Color.A = math.floor(lerp(self.button.text.Color.A, 0, 0.03))
+                self.button.Color.A = math.floor(lerp(self.button.Color.A, 0, 0.03))
+                self.cost.text.Color.A = math.floor(lerp(self.cost.text.Color.A, 0, 0.03))
+                self.cost.coin.Position.Y = lerp(self.cost.coin.Position.Y, -32, 0.3)
             end)
         end
         Timer(0.51, false, function()
+            self.shape.Position.Y = 0
             self.button.text:SetParent(nil)
             self.button.text = nil
             self.button:SetParent(nil)
             self.button = nil
+            self.cost.text:SetParent(nil)
+            self.cost.text = nil
+            self.cost.coin:SetParent(nil)
+            self.cost.coin = nil
+            self.cost = nil
         end)
     end
+
+    return obj
 end
 
 map.objects = {

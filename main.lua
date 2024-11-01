@@ -1,13 +1,13 @@
 Config = {
     Map = nil,
     Items = {
-        "voxels.oak_floor", "voxels.toxic_barrel"
+        "voxels.oak_floor", "voxels.toxic_barrel", "voxels.pezh_coin"
     }
 }
 
 function Client.OnStart()
     _DEBUG = true
-    _HASH = "90cb207"
+    _HASH = "a031f69"
     _LATEST_LINK = "https://raw.githubusercontent.com/Nanskip/cubzh-pizza/" .. _HASH .. "/"
     _LOGS = {}
 
