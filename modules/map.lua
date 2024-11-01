@@ -95,7 +95,7 @@ map.create_object = function(self, object, config)
     obj.cost.text.Scale = 1
     obj.cost.text.Rotation.X = math.pi/2
 
-    obj.cost.coin = Shape(Items.voxels.coin)
+    obj.cost.coin = Shape(Items.voxels.pezh_coin)
     obj.cost.coin:SetParent(World)
     obj.cost.coin.Position = Number3(config.position[1]+0.25, 0, config.position[2]+0.5)*16 + Number3(0, 0.52, 0)
     obj.cost.coin.Scale = Number3(0.5, 0.1, 0.5)
