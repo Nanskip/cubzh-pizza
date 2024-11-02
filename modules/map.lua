@@ -133,6 +133,7 @@ map.create_object = function(self, object, config)
 
     obj.purchase = function(self)
         if not self.purchased then
+            self.addedMoney = 0
             for i=1, 60 do
                 Timer(0.016*i, false, function()
                     self.addedMoney = math.ceil(self.addedMoney, self.cost.num, 0.1)
