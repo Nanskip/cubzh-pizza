@@ -102,6 +102,10 @@ map.create_object = function(self, object, config)
             config[key] = value
         end
     end
+    local OBJ_cost = object.cost
+    if config.cost ~= nil then
+        OBJ_cost = config.cost
+    end
 
     obj.shape = Shape(object.shape)
     obj.shape:SetParent(World)
@@ -132,14 +136,14 @@ map.create_object = function(self, object, config)
     obj.cost = {}
     obj.cost.text = Text()
     obj.cost.text.Font = Font.Noto
-    obj.cost.text.Text = "0/"..object.cost
+    obj.cost.text.Text = "0/"..OBJ_cost
     obj.cost.text:SetParent(World)
     obj.cost.text.Position = Number3(config.position[1]+0.5, 0, config.position[2]+0.5)*16 + Number3(0, 0.52, 0)
     obj.cost.text.Color = Color(0, 0, 0)
     obj.cost.text.BackgroundColor = Color(0, 0, 0, 0)
     obj.cost.text.Scale = 1
     obj.cost.text.Rotation.X = math.pi/2
-    obj.cost.num = object.cost
+    obj.cost.num = OBJ_cost
 
     obj.cost.bar = Quad()
     obj.cost.bar:SetParent(World)
@@ -217,7 +221,6 @@ map.INIT_ROOMS = function(self)
             local cfg = value.objects[i].config
             local obj = value.objects[i].object
 
-            if value.objects[i].config.cost ~= nil then obj.cost = value.objects[i].config.cost end
             self._OBJECTS[cfg.position[1]][cfg.position[2]] = self:create_object(obj, cfg)
         end
     end
