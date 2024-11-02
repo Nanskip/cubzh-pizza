@@ -75,7 +75,7 @@ function interface.UPDATE_SIDES(self)
         math.floor((self.etc.leftColors[1].B + self.etc.leftColors[2].B + self.etc.leftColors[3].B)/3)
     )
     self.etc.leftColor = Color(lerp(self.etc.leftColor.R, leftColor.R, 0.1), lerp(self.etc.leftColor.G, leftColor.G, 0.1), lerp(self.etc.leftColor.B, leftColor.B, 0.1))
-    self.etc.screen_right.Color = { gradient="H", from=self.etc.leftColor, to=Color(68, 68, 68)}
+    self.etc.screen_left.Color = { gradient="H", from=self.etc.leftColor, to=Color(68, 68, 68)}
     self.etc.screen_left.Width, self.etc.screen_left.Height = (Screen.Width-Screen.Height*0.5625)/2, Screen.Height
 
     for i=-1, 1 do
