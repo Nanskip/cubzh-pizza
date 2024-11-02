@@ -74,8 +74,12 @@ function interface.UPDATE_SIDES(self)
         math.floor((self.etc.leftColors[1].G + self.etc.leftColors[2].G + self.etc.leftColors[3].G)/3),
         math.floor((self.etc.leftColors[1].B + self.etc.leftColors[2].B + self.etc.leftColors[3].B)/3)
     )
-    self.etc.leftColor = Color(lerp(self.etc.leftColor.R, leftColor.R, 0.1), lerp(self.etc.leftColor.G, leftColor.G, 0.1), lerp(self.etc.leftColor.B, leftColor.B, 0.1))
-    self.etc.screen_left.Color = { gradient="H", from=self.etc.leftColor, to=Color(68, 68, 68)}
+    self.etc.leftColor = Color(
+        math.floor(lerp(self.etc.leftColor.R, leftColor.R, 0.1)),
+        math.floor(lerp(self.etc.leftColor.G, leftColor.G, 0.1)),
+        math.floor(lerp(self.etc.leftColor.B, leftColor.B, 0.1))
+    )
+    self.etc.screen_left.Color = { gradient="H", from=Color(68, 68, 68), to=self.etc.leftColor}
     self.etc.screen_left.Width, self.etc.screen_left.Height = (Screen.Width-Screen.Height*0.5625)/2, Screen.Height
 
     for i=-1, 1 do
@@ -101,7 +105,11 @@ function interface.UPDATE_SIDES(self)
         math.floor((self.etc.rightColors[1].G + self.etc.rightColors[2].G + self.etc.rightColors[3].G)/3),
         math.floor((self.etc.rightColors[1].B + self.etc.rightColors[2].B + self.etc.rightColors[3].B)/3)
     )
-    self.etc.rightColor = Color(lerp(self.etc.rightColor.R, rightColor.R, 0.1), lerp(self.etc.rightColor.G, rightColor.G, 0.1), lerp(self.etc.rightColor.B, rightColor.B, 0.1))
+    self.etc.rightColor = Color(
+        math.floor(lerp(self.etc.rightColor.R, rightColor.R, 0.1)),
+        math.floor(lerp(self.etc.rightColor.G, rightColor.G, 0.1)),
+        math.floor(lerp(self.etc.rightColor.B, rightColor.B, 0.1))
+    )
     self.etc.screen_right.Color = { gradient="H", from=self.etc.rightColor, to=Color(68, 68, 68)}
     self.etc.screen_right.Width, self.etc.screen_right.Height = (Screen.Width-Screen.Height*0.5625)/2, Screen.Height
     self.etc.screen_right.pos = Number2(Screen.Width - self.etc.screen_right.Width, 0)
