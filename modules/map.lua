@@ -164,7 +164,7 @@ map.create_object = function(self, object, config)
     end
 
     obj.checkMoney = function(self)
-        if self.cost.num <= money and not self.purchased then
+        if self.cost.num <= _MONEY and not self.purchased then
             _MONEY = _MONEY - self.cost.num
             self:purchase()
         end
