@@ -24,7 +24,7 @@ map.objects = {
             log(self.name .. " Object triggered!")
             self.shape1 = Shape(Items.chocomatte.cash_register02)
             self.shape1:SetParent(self.shape)
-            self.shape1.Position = self.shape.Position + Number3(-8, 16, 8)
+            self.shape1.Position = self.shape.Position + Number3(10, 8, -4)
         end,
         remove = function(self)
             log(self.name .. " Object removed!")
