@@ -17,7 +17,6 @@ function interface.CREATE(self)
     end
 
     self.etc = {}
-    self.etc.safearea = 0
     local function createSides()
         self.etc.screen_left = ui:createFrame()
         self.etc.leftColors = {
@@ -37,7 +36,6 @@ function interface.CREATE(self)
     
         self.SideTick = LocalEvent:Listen(LocalEvent.Name.Tick, function(dt)
             self:UPDATE_SIDES()
-            self.etc.safearea = math.max(0, (Screen.Width-Screen.Height*0.5625)/2)
         end)
     end createSides()
 
@@ -55,6 +53,7 @@ function interface.UPDATE(self)
     local HEIGHT_MUL = Screen.Height / 1920
     local SCREEN_MUL = math.min(WIDTH_MUL, HEIGHT_MUL)
     local FOV_UPDATE = 60 * math.min(WIDTH_MUL, HEIGHT_MUL)
+    local SAFEAREA = math.max(0, (Screen.Width-Screen.Height*0.5625)/2)
     Camera.FOV = FOV_UPDATE
 
     if player.joystick then
@@ -64,7 +63,7 @@ function interface.UPDATE(self)
 
     self.money.text.Text = "$" .. _MONEY
     self.money.frame.Width, self.money.frame.Height = self.money.text.Width + 20, self.money.text.Height + 10
-    self.money.frame.pos = Number2(Screen.Width - self.money.frame.Width - 10 - self.etc.safearea, Screen.Height - self.money.frame.Height - 10 - Screen.SafeArea.Top)
+    self.money.frame.pos = Number2(Screen.Width - self.money.frame.Width - 10 - SAFEAREA, Screen.Height - self.money.frame.Height - 10 - Screen.SafeArea.Top)
     self.money.text.pos = Number2(self.money.frame.pos.X + 15, self.money.frame.pos.Y + 5)
 end
 
