@@ -19,13 +19,9 @@ function interface.CREATE(self)
         Color(255, 255, 255),
         Color(255, 255, 255),
         Color(255, 255, 255),
-        Color(255, 255, 255),
-        Color(255, 255, 255),
     }
     self.etc.screen_right = ui:createFrame()
     self.etc.rightColors = {
-        Color(255, 255, 255),
-        Color(255, 255, 255),
         Color(255, 255, 255),
         Color(255, 255, 255),
         Color(255, 255, 255),
@@ -52,40 +48,40 @@ function interface.UPDATE(self)
 end
 
 function interface.UPDATE_SIDES(self)
-    for i=-2, 2 do
+    for i=-1, 1 do
         local ray = Ray(Camera.Position, Camera.Forward + Camera.Left*0.1 + Camera.Up*i*0.1)
         local impact = ray:Cast({1, 2})
         if impact.Block.Color ~= nil then
             self.etc.leftColors[i+2] = Color(
-                math.floor(lerp(self.etc.leftColors[i+3].R, impact.Block.Color.R, 0.1)),
-                math.floor(lerp(self.etc.leftColors[i+3].G, impact.Block.Color.G, 0.1)),
-                math.floor(lerp(self.etc.leftColors[i+3].B, impact.Block.Color.B, 0.1))
+                math.floor(lerp(self.etc.leftColors[i+2].R, impact.Block.Color.R, 0.1)),
+                math.floor(lerp(self.etc.leftColors[i+2].G, impact.Block.Color.G, 0.1)),
+                math.floor(lerp(self.etc.leftColors[i+2].B, impact.Block.Color.B, 0.1))
             )
         elseif impact.Object.Color ~= nil then
             self.etc.leftColors[i+2] = Color(
-                math.floor(lerp(self.etc.leftColors[i+3].R, impact.Object.Color.R, 0.1)),
-                math.floor(lerp(self.etc.leftColors[i+3].G, impact.Object.Color.G, 0.1)),
-                math.floor(lerp(self.etc.leftColors[i+3].B, impact.Object.Color.B, 0.1))
+                math.floor(lerp(self.etc.leftColors[i+2].R, impact.Object.Color.R, 0.1)),
+                math.floor(lerp(self.etc.leftColors[i+2].G, impact.Object.Color.G, 0.1)),
+                math.floor(lerp(self.etc.leftColors[i+2].B, impact.Object.Color.B, 0.1))
             )
         end
     end
 
     local leftColor = Color(
-        math.floor((self.etc.leftColors[1].R + self.etc.leftColors[2].R + self.etc.leftColors[3].R + self.etc.leftColors[4].R + self.etc.leftColors[5].R)/5),
-        math.floor((self.etc.leftColors[1].G + self.etc.leftColors[2].G + self.etc.leftColors[3].G + self.etc.leftColors[4].G + self.etc.leftColors[5].G)/5),
-        math.floor((self.etc.leftColors[1].B + self.etc.leftColors[2].B + self.etc.leftColors[3].B + self.etc.leftColors[4].B + self.etc.leftColors[5].B)/5)
+        math.floor((self.etc.leftColors[1].R + self.etc.leftColors[2].R + self.etc.leftColors[3].R)/3),
+        math.floor((self.etc.leftColors[1].G + self.etc.leftColors[2].G + self.etc.leftColors[3].G)/3),
+        math.floor((self.etc.leftColors[1].B + self.etc.leftColors[2].B + self.etc.leftColors[3].B)/3)
     )
     self.etc.screen_left.Color = { gradient="H", from=Color(68, 68, 68), to=leftColor}
     self.etc.screen_left.Width, self.etc.screen_left.Height = (Screen.Width-Screen.Height*0.5625)/2, Screen.Height
 
-    for i=-2, 2 do
+    for i=-1, 1 do
         local ray = Ray(Camera.Position, Camera.Forward + Camera.Right*0.1 + Camera.Up*i*0.1)
         local impact = ray:Cast({1, 2})
         if impact.Block.Color ~= nil then
             self.etc.rightColors[i+2] = Color(
-                math.floor(lerp(self.etc.rightColors[i+3].R, impact.Block.Color.R, 0.1)),
-                math.floor(lerp(self.etc.rightColors[i+3].G, impact.Block.Color.G, 0.1)),
-                math.floor(lerp(self.etc.rightColors[i+3].B, impact.Block.Color.B, 0.1))
+                math.floor(lerp(self.etc.rightColors[i+2].R, impact.Block.Color.R, 0.1)),
+                math.floor(lerp(self.etc.rightColors[i+2].G, impact.Block.Color.G, 0.1)),
+                math.floor(lerp(self.etc.rightColors[i+2].B, impact.Block.Color.B, 0.1))
             )
         elseif impact.Object.Color ~= nil then
             self.etc.rightColors[i+2] = Color(
@@ -97,9 +93,9 @@ function interface.UPDATE_SIDES(self)
     end
 
     local rightColor = Color(
-        math.floor((self.etc.rightColors[1].R + self.etc.rightColors[2].R + self.etc.rightColors[3].R + self.etc.rightColors[4].R + self.etc.rightColors[5].R)/5),
-        math.floor((self.etc.rightColors[1].G + self.etc.rightColors[2].G + self.etc.rightColors[3].G + self.etc.rightColors[4].G + self.etc.rightColors[5].G)/5),
-        math.floor((self.etc.rightColors[1].B + self.etc.rightColors[2].B + self.etc.rightColors[3].B + self.etc.rightColors[4].B + self.etc.rightColors[5].B)/5)
+        math.floor((self.etc.rightColors[1].R + self.etc.rightColors[2].R + self.etc.rightColors[3].R)/3),
+        math.floor((self.etc.rightColors[1].G + self.etc.rightColors[2].G + self.etc.rightColors[3].G)/3),
+        math.floor((self.etc.rightColors[1].B + self.etc.rightColors[2].B + self.etc.rightColors[3].B)/3)
     )
     self.etc.screen_right.Color = { gradient="H", from=rightColor, to=Color(68, 68, 68)}
     self.etc.screen_right.Width, self.etc.screen_right.Height = (Screen.Width-Screen.Height*0.5625)/2, Screen.Height
