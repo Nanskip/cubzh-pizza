@@ -71,9 +71,9 @@ function interface.UPDATE_SIDES(self)
     end
 
     local leftColor = Color(
-        math.floor((self.etc.leftColors[1].R + self.etc.leftColors[2].R + self.etc.leftColors[3].R)/3),
-        math.floor((self.etc.leftColors[1].G + self.etc.leftColors[2].G + self.etc.leftColors[3].G)/3),
-        math.floor((self.etc.leftColors[1].B + self.etc.leftColors[2].B + self.etc.leftColors[3].B)/3)
+        math.floor((self.etc.leftColors[1].R + self.etc.leftColors[2].R + self.etc.leftColors[3].R + self.etc.leftColors[4].R + self.etc.leftColors[5].R)/5),
+        math.floor((self.etc.leftColors[1].G + self.etc.leftColors[2].G + self.etc.leftColors[3].G + self.etc.leftColors[4].G + self.etc.leftColors[5].G)/5),
+        math.floor((self.etc.leftColors[1].B + self.etc.leftColors[2].B + self.etc.leftColors[3].B + self.etc.leftColors[4].B + self.etc.leftColors[5].B)/5)
     )
     self.etc.screen_left.Color = { gradient="H", from=Color(68, 68, 68), to=leftColor}
     self.etc.screen_left.Width, self.etc.screen_left.Height = (Screen.Width-Screen.Height*0.5625)/2, Screen.Height
@@ -97,9 +97,9 @@ function interface.UPDATE_SIDES(self)
     end
 
     local rightColor = Color(
-        math.floor((self.etc.rightColors[1].R + self.etc.rightColors[2].R + self.etc.rightColors[3].R)/3),
-        math.floor((self.etc.rightColors[1].G + self.etc.rightColors[2].G + self.etc.rightColors[3].G)/3),
-        math.floor((self.etc.rightColors[1].B + self.etc.rightColors[2].B + self.etc.rightColors[3].B)/3)
+        math.floor((self.etc.rightColors[1].R + self.etc.rightColors[2].R + self.etc.rightColors[3].R + self.etc.rightColors[4].R + self.etc.rightColors[5].R)/5),
+        math.floor((self.etc.rightColors[1].G + self.etc.rightColors[2].G + self.etc.rightColors[3].G + self.etc.rightColors[4].G + self.etc.rightColors[5].G)/5),
+        math.floor((self.etc.rightColors[1].B + self.etc.rightColors[2].B + self.etc.rightColors[3].B + self.etc.rightColors[4].B + self.etc.rightColors[5].B)/5)
     )
     self.etc.screen_right.Color = { gradient="H", from=rightColor, to=Color(68, 68, 68)}
     self.etc.screen_right.Width, self.etc.screen_right.Height = (Screen.Width-Screen.Height*0.5625)/2, Screen.Height
