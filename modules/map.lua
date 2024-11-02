@@ -108,8 +108,10 @@ map.create_object = function(self, object, config)
     obj.button.Rotation.X = math.pi/2
     obj.button.Position = Number3(config.position[1], 0, config.position[2])*16 + Number3(0, 0.51, 0)
     obj.button.Scale = 16
+    obj.button.coords = {config.position[1], config.position[2]}
 
     obj.button.text = Text()
+    obj.button.text.Font = Font.Noto
     obj.button.text.Text = object.name
     obj.button.text:SetParent(World)
     obj.button.text.Position = Number3(config.position[1]+0.5, 0, config.position[2]+0.75)*16 + Number3(0, 0.52, 0)
@@ -120,6 +122,7 @@ map.create_object = function(self, object, config)
 
     obj.cost = {}
     obj.cost.text = Text()
+    obj.cost.text.Font = Font.Noto
     obj.cost.text.Text = "0/"..object.cost
     obj.cost.text:SetParent(World)
     obj.cost.text.Position = Number3(config.position[1]+0.5, 0, config.position[2]+0.5)*16 + Number3(0, 0.52, 0)
@@ -167,7 +170,8 @@ map.INIT_ROOMS = function(self)
     for key, value in pairs(self.rooms) do
         self._ROOMS[key] = self:create_room(value.position, value.scale, value.type)
         for i=1, #value.objects do
-            self:create_object(value.objects[i].object, value.objects[i].config)
+            if not map.OBJECTS[value.objects[i].config.position[1]] then map.OBJECTS[value.objects[i].config.position[1]] = {} end
+            map.OBJECTS[value.objects[i].config.position[1]][value.objects[i].config.position[2]] = self:create_object(value.objects[i].object, value.objects[i].config)
         end
     end
 end

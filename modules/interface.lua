@@ -44,6 +44,7 @@ function interface.CREATE(self)
     self.money.frame.Color = Color(255, 255, 255)
     self.money.text = ui:createText("")
     self.money.text.Color = Color(36, 16, 2)
+    self.money.coin = ui:createShape(Shape(Items.voxels.pezh_coin))
 
     self:UPDATE()
 end
@@ -65,6 +66,9 @@ function interface.UPDATE(self)
     self.money.frame.Width, self.money.frame.Height = self.money.text.Width + 20, self.money.text.Height + 10
     self.money.frame.pos = Number2(Screen.Width - self.money.frame.Width - 10 - SAFEAREA, Screen.Height - self.money.frame.Height - 10 - Screen.SafeArea.Top)
     self.money.text.pos = Number2(self.money.frame.pos.X + 15, self.money.frame.pos.Y + 5)
+    self.money.coin.shape.Pivot = Number3(self.money.coin.shape.Width/2, self.money.coin.shape.Height/2, self.money.coin.shape.Depth/2)
+    self.money.coin.shape.Rotation = Rotation(-math.pi/2, 0, 0)*Rotation(0, 0.1, 0)
+    self.money.coin.pos = Number2(Screen.Width - self.money.frame.Width - 80 - SAFEAREA, self.money.frame.pos.Y + self.money.frame.Height/2)
 end
 
 function interface.UPDATE_SIDES(self)
