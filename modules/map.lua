@@ -26,12 +26,14 @@ map.rooms = {
                 object = map.objects.test,
                 config = {
                     position = {3, 3},
+                    scale = 0.5
                 }
             },
             {
                 object = map.objects.test,
                 config = {
                     position = {1, 3},
+                    scale = 0.75,
                     cost = 25
                 }
             },
@@ -39,6 +41,7 @@ map.rooms = {
                 object = map.objects.test,
                 config = {
                     position = {5, 2},
+                    scale = 0.25,
                     cost = 25
                 }
             }

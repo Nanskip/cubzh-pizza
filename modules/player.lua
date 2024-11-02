@@ -34,7 +34,7 @@ player.checkButtons = function(self)
     local impact = ray:Cast(nil, Player)
     if impact ~= nil then
         self.button_timer = self.button_timer + _DELTA_TIME
-        if self.button_timer > 1 then
+        if self.button_timer > 60 then
             if impact.Object.coords ~= nil then
                 map._OBJECTS[impact.Object.coords[1]][impact.Object.coords[2]]:checkMoney()
             end
