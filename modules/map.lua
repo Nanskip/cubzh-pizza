@@ -27,6 +27,20 @@ map.rooms = {
                 config = {
                     position = {3, 3},
                 }
+            },
+            {
+                object = map.objects.test,
+                config = {
+                    position = {1, 3},
+                    cost = 25
+                }
+            },
+            {
+                object = map.objects.test,
+                config = {
+                    position = {5, 2},
+                    cost = 25
+                }
             }
         }
     }
@@ -194,7 +208,9 @@ map.INIT_ROOMS = function(self)
         self._ROOMS[key] = self:create_room(value.position, value.scale, value.type)
         for i=1, #value.objects do
             if not self._OBJECTS[value.objects[i].config.position[1]] then self._OBJECTS[value.objects[i].config.position[1]] = {} end
-            self._OBJECTS[value.objects[i].config.position[1]][value.objects[i].config.position[2]] = self:create_object(value.objects[i].object, value.objects[i].config)
+            local cfg = value.objects[i].config
+            if value.objects[i].config.cost ~= nil then cfg.cost = value.objects[i].config.cost end
+            self._OBJECTS[value.objects[i].config.position[1]][value.objects[i].config.position[2]] = self:create_object(value.objects[i].object, cfg)
         end
     end
 end
