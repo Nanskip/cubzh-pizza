@@ -208,9 +208,12 @@ map.INIT_ROOMS = function(self)
         self._ROOMS[key] = self:create_room(value.position, value.scale, value.type)
         for i=1, #value.objects do
             if not self._OBJECTS[value.objects[i].config.position[1]] then self._OBJECTS[value.objects[i].config.position[1]] = {} end
+
             local cfg = value.objects[i].config
-            if value.objects[i].config.cost ~= nil then cfg.cost = value.objects[i].config.cost end
-            self._OBJECTS[value.objects[i].config.position[1]][value.objects[i].config.position[2]] = self:create_object(value.objects[i].object, cfg)
+            local obj = value.objects[i].object
+
+            if value.objects[i].config.cost ~= nil then obj.cost = value.objects[i].config.cost end
+            self._OBJECTS[cfg.value.objects[i].config.position[1]][cfg.position[2]] = self:create_object(obj, cfg)
         end
     end
 end
