@@ -1,6 +1,8 @@
 local interface = {}
 
 function interface.INIT(self)
+    self.showMoney = 0
+
     return true
 end
 
