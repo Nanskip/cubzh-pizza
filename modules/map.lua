@@ -128,7 +128,7 @@ map.create_object = function(self, object, config)
     obj.cost.bar:SetParent(World)
     obj.cost.bar.Color = Color(107, 255, 99)
     obj.cost.bar.Position = Number3(config.position[1]+0.5-0.35, 0, config.position[2]+0.5-0.1)*16 + Number3(0, 0.515, 0)
-    obj.cost.bar.Scale = Number3(0.7, 0.2, 1)*16
+    obj.cost.bar.Scale = Number3(0, 0.2, 1)*16
     obj.cost.bar.Rotation.X = math.pi/2
 
     obj.cost.coin = Shape(Items.voxels.pezh_coin)
@@ -144,7 +144,7 @@ map.create_object = function(self, object, config)
             for i=1, 60 do
                 Timer(0.016*i, false, function()
                     self.addedMoney = lerp(self.addedMoney, self.cost.num, 0.1)
-                    self.cost.bar.Scale.X = lerp(self.cost.bar.Scale.X, self.addedMoney/self.cost.num, 0.1)*0.7*16
+                    self.cost.bar.Scale.X = lerp(self.cost.bar.Scale.X, 0.7*16, 0.1)
                     self.cost.text.Text = math.round(self.addedMoney) .."/"..object.cost
                 end)
 
