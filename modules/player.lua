@@ -16,7 +16,7 @@ player.spawn = function(self)
     Player.Tick = function(s)
         s.Position.Y = 0.5
         local dir = rotate45({player.joystick:getValues().X, player.joystick:getValues().Y})
-        s.Motion = Number3(dir[1], 0, dir[2])*30*player.speed/100*_DELTA_TIME
+        s.Motion = Number3(dir[1], 0, dir[2])*30*player.speed/100
         if dir[1] ~= 0 or dir[2] ~= 0 then
             s.Forward = Number3(dir[1], 0, dir[2])
         end
