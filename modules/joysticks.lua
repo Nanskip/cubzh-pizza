@@ -39,7 +39,7 @@ joysticks.create = function(config)
     end
 
     if joystick ~= nil then
-        joystick.stick = ui:createShape(Shape(Items.nanskip.joystick_stick))
+        joystick.stick = ui:createShape(Shape(Items.nanskip.joystick_stick_v2))
         joystick.stick.shape.Palette[1].Color = joystick.config.borderColor
         joystick.stick.shape.Palette[2].Color = joystick.config.color
         joystick.stick.fakepos = Number2(0, 0)
