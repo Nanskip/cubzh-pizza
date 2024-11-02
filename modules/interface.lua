@@ -32,7 +32,8 @@ function interface.CREATE(self)
         self.etc.rightColor = Color(255, 255, 255)
     
         self.SideTick = LocalEvent:Listen(LocalEvent.Name.Tick, function(dt)
-            interface:UPDATE_SIDES()
+            self:UPDATE_SIDES()
+            self.etc.safearea = math.max(0, (Screen.Width-Screen.Height*0.5625)/2)
         end)
     end createSides()
 
@@ -59,7 +60,7 @@ function interface.UPDATE(self)
 
     self.money.text.Text = "$" .. _MONEY
     self.money.frame.Width, self.money.frame.Height = self.money.text.Width + 20, self.money.text.Height + 10
-    self.money.frame.pos = Number2(Screen.Width - self.money.frame.Width - 20 - self.etc.screen_right.Width, Screen.Height - self.money.frame.Height - 10 - Screen.SafeArea.Top)
+    self.money.frame.pos = Number2(Screen.Width - self.money.frame.Width - 10 - self.etc.safearea, Screen.Height - self.money.frame.Height - 10 - Screen.SafeArea.Top)
     self.money.text.pos = Number2(self.money.frame.pos.X + 15, self.money.frame.pos.Y + 5)
 end
 
