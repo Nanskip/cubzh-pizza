@@ -19,7 +19,7 @@ map.objects = {
     checkout = {
         name = "Checkout",
         cost = 100,
-        shape = Items.voxels.checkout_counter,
+        shape = Items.pratamacam.checkout_counter,
         action = function(self)
             log(self.name .. " Object triggered!")
             self.shape1 = Shape(Items.chocomatte.cash_register02)
