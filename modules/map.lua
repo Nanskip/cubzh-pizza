@@ -10,7 +10,7 @@ map.objects = {
         cost = 50,
         shape = Items.voxels.toxic_barrel,
         action = function(self)
-            log(self.name .. "Object triggered!")
+            log(self.name .. " Object triggered!")
         end,
         remove = function(self)
             log(self.name .. " Object removed!")
@@ -21,10 +21,15 @@ map.objects = {
         cost = 100,
         shape = Items.voxels.checkout_counter,
         action = function(self)
-            log(self.name .. "Object triggered!")
+            log(self.name .. " Object triggered!")
+            self.shape1 = Shape(Items.chocomatte.cash_register02)
+            self.shape1:SetParent(self)
+            self.shape1.Position = self.Position + Number3(0, 16, 0)
         end,
         remove = function(self)
             log(self.name .. " Object removed!")
+            self.shape1:SetParent(nil)
+            self.shape1 = nil
         end
     }
 }
@@ -52,11 +57,10 @@ map.rooms = {
                 }
             },
             {
-                object = map.objects.test,
+                object = map.objects.checkout,
                 config = {
                     position = {5, 2},
-                    scale = 0.25,
-                    cost = 25
+                    scale = 0.5,
                 }
             }
         }
