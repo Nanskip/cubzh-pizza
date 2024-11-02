@@ -166,7 +166,7 @@ map.create_object = function(self, object, config)
                 Timer(0.016*i, false, function()
                     self.addedMoney = lerp(self.addedMoney, self.cost.num, 0.1)
                     self.cost.bar.Scale.X = lerp(self.cost.bar.Scale.X, 0.7*16, 0.1)
-                    self.cost.text.Text = math.round(self.addedMoney) .."/"..object.cost
+                    self.cost.text.Text = math.round(self.addedMoney) .."/"..self.cost.num
                     self.cost.coin.Scale.Y = lerp(self.cost.coin.Scale.Y, 3, 0.05)
                 end)
 
