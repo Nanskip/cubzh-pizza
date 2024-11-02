@@ -36,7 +36,7 @@ player.checkButtons = function(self)
         self.button_timer = self.button_timer + _DELTA_TIME
         if self.button_timer > 1 then
             if impact.Object.coords ~= nil then
-                map.
+                map.OBJECTS[impact.Object.coords[1]][impact.Object.coords[2]]:checkMoney(_MONEY)
             end
         end
     else
