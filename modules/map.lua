@@ -213,7 +213,7 @@ map.INIT_ROOMS = function(self)
             local obj = value.objects[i].object
 
             if value.objects[i].config.cost ~= nil then obj.cost = value.objects[i].config.cost end
-            self._OBJECTS[cfg.value.objects[i].config.position[1]][cfg.position[2]] = self:create_object(obj, cfg)
+            self._OBJECTS[cfg.position[1]][cfg.position[2]] = self:create_object(obj, cfg)
         end
     end
 end
