@@ -19,9 +19,13 @@ function interface.CREATE(self)
         Color(255, 255, 255),
         Color(255, 255, 255),
         Color(255, 255, 255),
+        Color(255, 255, 255),
+        Color(255, 255, 255),
     }
     self.etc.screen_right = ui:createFrame()
     self.etc.rightColors = {
+        Color(255, 255, 255),
+        Color(255, 255, 255),
         Color(255, 255, 255),
         Color(255, 255, 255),
         Color(255, 255, 255),
