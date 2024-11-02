@@ -138,7 +138,6 @@ map.create_object = function(self, object, config)
                 Timer(0.016*i, false, function()
                     self.addedMoney = math.ceil(self.addedMoney, self.cost.num, 0.1)
                     self.cost.text.Text = self.addedMoney .."/"..object.cost
-                    interface:UPDATE_COINS()
                 end)
 
                 Timer(0.016*i+1, false, function()

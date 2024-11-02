@@ -38,6 +38,7 @@ function interface.CREATE(self)
     
         self.SideTick = LocalEvent:Listen(LocalEvent.Name.Tick, function(dt)
             self:UPDATE_SIDES()
+            self:UPDATE_COINS()
         end)
     end createSides()
 
@@ -74,7 +75,7 @@ function interface.UPDATE(self)
 end
 
 function interface.UPDATE_COINS(self)
-    self.showMoney = lerp(self.showMoney, _MONEY, 0.1)
+    self.showMoney = lerp(self.showMoney, _MONEY, math.abs(self.showMoney - _MONEY)*0.02)
     self.money.text.Text = "$" .. math.round(self.showMoney)
 end
 
