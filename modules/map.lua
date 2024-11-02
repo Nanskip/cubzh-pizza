@@ -136,8 +136,8 @@ map.create_object = function(self, object, config)
             self.addedMoney = 0
             for i=1, 60 do
                 Timer(0.016*i, false, function()
-                    self.addedMoney = math.ceil(self.addedMoney, self.cost.num, 0.1)
-                    self.cost.text.Text = self.addedMoney .."/"..object.cost
+                    self.addedMoney = lerp(self.addedMoney, self.cost.num, 0.1)
+                    self.cost.text.Text = math.round(self.addedMoney) .."/"..object.cost
                 end)
 
                 Timer(0.016*i+1, false, function()
@@ -158,6 +158,7 @@ map.create_object = function(self, object, config)
                 self.cost.text = nil
                 self.cost.coin:SetParent(nil)
                 self.cost.coin = nil
+                self.cost.num = nil
                 self.cost = nil
             end)
         end
@@ -165,9 +166,11 @@ map.create_object = function(self, object, config)
     end
 
     obj.checkMoney = function(self)
-        if self.cost.num <= _MONEY and not self.purchased then
-            _MONEY = _MONEY - self.cost.num
-            self:purchase()
+        if not self.purchased then
+            if self.cost.num <= _MONEY then
+                _MONEY = _MONEY - self.cost.num
+                self:purchase()
+            end
         end
     end
 

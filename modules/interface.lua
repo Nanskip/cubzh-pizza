@@ -75,7 +75,7 @@ function interface.UPDATE(self)
 end
 
 function interface.UPDATE_COINS(self)
-    self.showMoney = lerp(self.showMoney, _MONEY, math.abs(self.showMoney - _MONEY)*0.02)
+    self.showMoney = lerp(self.showMoney, _MONEY, 0.75)
     self.money.text.Text = "$" .. math.round(self.showMoney)
 end
 
