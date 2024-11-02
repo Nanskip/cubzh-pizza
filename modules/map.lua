@@ -106,7 +106,7 @@ map.create_object = function(self, object, config)
     obj.button = Quad()
     obj.button:SetParent(World)
     obj.button.Rotation.X = math.pi/2
-    obj.button.Position = Number3(config.position[1], 0, config.position[2])*16 + Number3(0, 0.51, 0)
+    obj.button.Position = Number3(config.position[1], 0, config.position[2])*16 + Number3(0, 0.52, 0)
     obj.button.Scale = 16
     obj.button.coords = {config.position[1], config.position[2]}
 
