@@ -14,6 +14,7 @@ function interface.CREATE(self)
     end
 
     self.etc = {}
+    self.etc.safearea = 0
     local function createSides()
         self.etc.screen_left = ui:createFrame()
         self.etc.leftColors = {
