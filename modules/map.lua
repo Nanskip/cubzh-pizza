@@ -127,8 +127,8 @@ map.create_object = function(self, object, config)
     obj.cost.bar = Quad()
     obj.cost.bar:SetParent(World)
     obj.cost.bar.Color = Color(107, 255, 99)
-    obj.cost.bar.Position = Number3(config.position[1]+0.5-0.1, 0, config.position[2]+0.5-0.35)*16 + Number3(0, 0.515, 0)
-    obj.cost.bar.Scale = Number3(0.2, 0.7, 1)
+    obj.cost.bar.Position = Number3(config.position[1]+0.5-0.35, 0, config.position[2]+0.5-0.1)*16 + Number3(0, 0.515, 0)
+    obj.cost.bar.Scale = Number3(0.7, 0.2, 1)*16
     obj.cost.bar.Rotation.X = math.pi/2
 
     obj.cost.coin = Shape(Items.voxels.pezh_coin)
