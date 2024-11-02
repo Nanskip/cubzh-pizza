@@ -8,7 +8,7 @@ Config = {
 
 function Client.OnStart()
     _DEBUG = true
-    _HASH = "df22884"
+    _HASH = "ef83bf2"
     _LATEST_LINK = "https://raw.githubusercontent.com/Nanskip/cubzh-pizza/" .. _HASH .. "/"
     _LOGS = {}
 
@@ -160,6 +160,10 @@ function rotate45(xy)
     local newX = sqrt2_div_2 * (x + y)
     local newY = sqrt2_div_2 * (y - x)
     return {newX, newY}
+end
+
+function math.round(num)
+    return math.floor(num+0.5)
 end
 
 Client.DirectionalPad = nil

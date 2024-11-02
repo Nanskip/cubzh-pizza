@@ -138,6 +138,7 @@ map.create_object = function(self, object, config)
                 Timer(0.016*i, false, function()
                     self.addedMoney = math.ceil(self.addedMoney, self.cost.num, 0.1)
                     self.cost.text.Text = self.addedMoney .."/"..object.cost
+                    interface:UPDATE_COINS()
                 end)
 
                 Timer(0.016*i+1, false, function()
@@ -148,7 +149,7 @@ map.create_object = function(self, object, config)
                     self.cost.coin.Position.Y = lerp(self.cost.coin.Position.Y, -32, 0.05)
                 end)
             end
-            Timer(1.01, false, function()
+            Timer(2.01, false, function()
                 self.shape.Position.Y = 0
                 self.button.text:SetParent(nil)
                 self.button.text = nil
