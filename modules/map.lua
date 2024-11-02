@@ -182,11 +182,12 @@ end
 
 map.INIT_ROOMS = function(self)
     self._ROOMS = {}
+    self._OBJECTS = {}
     for key, value in pairs(self.rooms) do
         self._ROOMS[key] = self:create_room(value.position, value.scale, value.type)
         for i=1, #value.objects do
-            if not map.OBJECTS[value.objects[i].config.position[1]] then map.OBJECTS[value.objects[i].config.position[1]] = {} end
-            map.OBJECTS[value.objects[i].config.position[1]][value.objects[i].config.position[2]] = self:create_object(value.objects[i].object, value.objects[i].config)
+            if not self._OBJECTS[value.objects[i].config.position[1]] then self._OBJECTS[value.objects[i].config.position[1]] = {} end
+            self._OBJECTS[value.objects[i].config.position[1]][value.objects[i].config.position[2]] = self:create_object(value.objects[i].object, value.objects[i].config)
         end
     end
 end
