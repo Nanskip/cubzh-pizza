@@ -48,7 +48,7 @@ function interface.UPDATE(self)
 end
 
 function interface.UPDATE_SIDES(self)
-    for i=-1, 1 do
+    for i=-2, 2 do
         local ray = Ray(Camera.Position, Camera.Forward + Camera.Left*0.1 + Camera.Up*i*0.1)
         local impact = ray:Cast({1, 2})
         if impact.Block.Color ~= nil then
@@ -74,7 +74,7 @@ function interface.UPDATE_SIDES(self)
     self.etc.screen_left.Color = { gradient="H", from=Color(68, 68, 68), to=leftColor}
     self.etc.screen_left.Width, self.etc.screen_left.Height = (Screen.Width-Screen.Height*0.5625)/2, Screen.Height
 
-    for i=-1, 1 do
+    for i=-2, 2 do
         local ray = Ray(Camera.Position, Camera.Forward + Camera.Right*0.1 + Camera.Up*i*0.1)
         local impact = ray:Cast({1, 2})
         if impact.Block.Color ~= nil then
