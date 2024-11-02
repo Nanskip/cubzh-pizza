@@ -17,7 +17,7 @@ player.spawn = function(self)
     Player.ShadowCookie = 0
     Player.Tick = function(s)
         s.Velocity.Y = 0
-        s.Position.Y = 0.52
+        s.Position.Y = 0.53
         local dir = rotate45({player.joystick:getValues().X, player.joystick:getValues().Y})
         s.Motion = Number3(dir[1], 0, dir[2])*30*player.speed/100
         if dir[1] ~= 0 or dir[2] ~= 0 then
@@ -25,7 +25,7 @@ player.spawn = function(self)
         end
 
         Camera.Position = Player.Position + Number3(-50, 75, -50)
-        self:checkButtons()
+        player:checkButtons()
     end
 end
 
@@ -33,11 +33,10 @@ player.checkButtons = function(self)
     local ray = Ray(Player.Position, {0, -1, 0})
     local impact = ray:Cast(nil, Player)
     if impact ~= nil then
-        print(impact.Object.Color)
         self.button_timer = self.button_timer + _DELTA_TIME
         if self.button_timer > 1 then
             if impact.Object.coords ~= nil then
-                map._OBJECTS[impact.Object.coords[1]][impact.Object.coords[2]]:checkMoney(_MONEY)
+                map._OBJECTS[impact.Object.coords[1]][impact.Object.coords[2]]:checkMoney()
             end
         end
     else
