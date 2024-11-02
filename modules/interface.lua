@@ -68,6 +68,7 @@ function interface.UPDATE(self)
 end
 
 function interface.UPDATE_COINS(self)
+    local SAFEAREA = math.max(0, (Screen.Width-Screen.Height*0.5625)/2)
     self.showMoney = lerp(self.showMoney, _MONEY, 0.75)
     self.money.text.Text = "$" .. math.round(self.showMoney)
     
