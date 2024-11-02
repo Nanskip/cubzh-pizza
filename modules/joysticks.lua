@@ -28,7 +28,7 @@ joysticks.create = function(config)
     joystick.config = config
 
     if joystick ~= nil then
-        joystick.shape = ui:createShape(Shape(Items.nanskip.joystick))
+        joystick.shape = ui:createShape(Shape(Items.nanskip.joystick_v2))
         joystick.shape.shape.Palette[1].Color = joystick.config.borderColor
         joystick.shape.shape.Palette[2].Color = joystick.config.color
 
