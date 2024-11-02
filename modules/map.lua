@@ -143,7 +143,8 @@ map.create_object = function(self, object, config)
             self.addedMoney = 0
             for i=1, 60 do
                 Timer(0.016*i, false, function()
-                    self.addedMoney = lerp(self.addedMoney, self.cost.num, 0.03)
+                    self.addedMoney = lerp(self.addedMoney, self.cost.num, 0.1)
+                    self.cost.bar.Scale.X = lerp(self.cost.bar.Scale.X, self.addedMoney/self.cost.num, 0.1)*0.7*16
                     self.cost.text.Text = math.round(self.addedMoney) .."/"..object.cost
                 end)
 
