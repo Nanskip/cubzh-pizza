@@ -124,6 +124,13 @@ map.create_object = function(self, object, config)
     obj.cost.text.Rotation.X = math.pi/2
     obj.cost.num = object.cost
 
+    obj.cost.bar = Quad()
+    obj.cost.bar:SetParent(World)
+    obj.cost.bar.Color = Color(107, 255, 99)
+    obj.cost.bar.Position = Number3(config.position[1]+0.5-0.1, 0, config.position[2]+0.5-0.35)*16 + Number3(0, 0.515, 0)
+    obj.cost.bar.Scale = Number3(0.2, 0.7, 1)
+    obj.cost.bar.Rotation.X = math.pi/2
+
     obj.cost.coin = Shape(Items.voxels.pezh_coin)
     obj.cost.coin:SetParent(World)
     obj.cost.coin.Physics = PhysicsMode.Disabled
@@ -156,6 +163,8 @@ map.create_object = function(self, object, config)
                 self.button = nil
                 self.cost.text:SetParent(nil)
                 self.cost.text = nil
+                self.cost.bar:SetParent(nil)
+                self.cost.bar = nil
                 self.cost.coin:SetParent(nil)
                 self.cost.coin = nil
                 self.cost.num = nil
