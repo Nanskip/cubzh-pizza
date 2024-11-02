@@ -14,25 +14,33 @@ function interface.CREATE(self)
     end
 
     self.etc = {}
-    self.etc.screen_left = ui:createFrame()
-    self.etc.leftColors = {
-        Color(255, 255, 255),
-        Color(255, 255, 255),
-        Color(255, 255, 255),
-    }
-    self.etc.leftColor = Color(255, 255, 255)
+    local function createSides()
+        self.etc.screen_left = ui:createFrame()
+        self.etc.leftColors = {
+            Color(255, 255, 255),
+            Color(255, 255, 255),
+            Color(255, 255, 255),
+        }
+        self.etc.leftColor = Color(255, 255, 255)
+    
+        self.etc.screen_right = ui:createFrame()
+        self.etc.rightColors = {
+            Color(255, 255, 255),
+            Color(255, 255, 255),
+            Color(255, 255, 255),
+        }
+        self.etc.rightColor = Color(255, 255, 255)
+    
+        self.SideTick = LocalEvent:Listen(LocalEvent.Name.Tick, function(dt)
+            interface:UPDATE_SIDES()
+        end)
+    end createSides()
 
-    self.etc.screen_right = ui:createFrame()
-    self.etc.rightColors = {
-        Color(255, 255, 255),
-        Color(255, 255, 255),
-        Color(255, 255, 255),
-    }
-    self.etc.rightColor = Color(255, 255, 255)
-
-    self.Tick = LocalEvent:Listen(LocalEvent.Name.Tick, function(dt)
-        interface:UPDATE_SIDES()
-    end)
+    self.money = {}
+    self.money.frame = ui:createFrame()
+    self.money.frame.Color = Color(255, 255, 255)
+    self.money.text = ui:createText("")
+    self.money.text.Color = Color(232, 94, 2)
 
     self:UPDATE()
 end
@@ -48,6 +56,11 @@ function interface.UPDATE(self)
         player.joystick:setScale(3*SCREEN_MUL)
         player.joystick:setPos(Number2(Screen.Width/2 - player.joystick.shape.Width/2, Screen.Height/6 - player.joystick.shape.Height/2))
     end
+
+    self.money.text.Text = "$" .. _MONEY
+    self.money.frame.Width, self.money.frame.Height = self.money.text.Width + 10, self.money.text.Height + 10
+    self.money.text.pos = Number2(Screen.Width - self.money.frame.Width - 5, Screen.Height - self.money.frame.Height - 5 - Screen.SafeArea.Top)
+    self.money.frame.pos = Number2(Screen.Width - self.money.frame.Width - 10, Screen.Height - self.money.frame.Height - 10 - Screen.SafeArea.Top)
 end
 
 function interface.UPDATE_SIDES(self)
