@@ -53,15 +53,15 @@ function interface.UPDATE_SIDES(self)
         local impact = ray:Cast({1, 2})
         if impact.Block.Color ~= nil then
             self.etc.leftColors[i+2] = Color(
-                math.floor(lerp(self.etc.leftColors[i+2].R, impact.Block.Color.R, 0.1)),
-                math.floor(lerp(self.etc.leftColors[i+2].G, impact.Block.Color.G, 0.1)),
-                math.floor(lerp(self.etc.leftColors[i+2].B, impact.Block.Color.B, 0.1))
+                math.floor(lerp(self.etc.leftColors[i+2].R, impact.Block.Color.R, 0.02)),
+                math.floor(lerp(self.etc.leftColors[i+2].G, impact.Block.Color.G, 0.02)),
+                math.floor(lerp(self.etc.leftColors[i+2].B, impact.Block.Color.B, 0.02))
             )
         elseif impact.Object.Color ~= nil then
             self.etc.leftColors[i+2] = Color(
-                math.floor(lerp(self.etc.leftColors[i+2].R, impact.Object.Color.R, 0.1)),
-                math.floor(lerp(self.etc.leftColors[i+2].G, impact.Object.Color.G, 0.1)),
-                math.floor(lerp(self.etc.leftColors[i+2].B, impact.Object.Color.B, 0.1))
+                math.floor(lerp(self.etc.leftColors[i+2].R, impact.Object.Color.R, 0.02)),
+                math.floor(lerp(self.etc.leftColors[i+2].G, impact.Object.Color.G, 0.02)),
+                math.floor(lerp(self.etc.leftColors[i+2].B, impact.Object.Color.B, 0.02))
             )
         end
     end
@@ -79,15 +79,15 @@ function interface.UPDATE_SIDES(self)
         local impact = ray:Cast({1, 2})
         if impact.Block.Color ~= nil then
             self.etc.rightColors[i+2] = Color(
-                math.floor(lerp(self.etc.rightColors[i+2].R, impact.Block.Color.R, 0.1)),
-                math.floor(lerp(self.etc.rightColors[i+2].G, impact.Block.Color.G, 0.1)),
-                math.floor(lerp(self.etc.rightColors[i+2].B, impact.Block.Color.B, 0.1))
+                math.floor(lerp(self.etc.rightColors[i+2].R, impact.Block.Color.R, 0.02)),
+                math.floor(lerp(self.etc.rightColors[i+2].G, impact.Block.Color.G, 0.02)),
+                math.floor(lerp(self.etc.rightColors[i+2].B, impact.Block.Color.B, 0.02))
             )
         elseif impact.Object.Color ~= nil then
             self.etc.rightColors[i+2] = Color(
-                math.floor(lerp(self.etc.rightColors[i+2].R, impact.Object.Color.R, 0.1)),
-                math.floor(lerp(self.etc.rightColors[i+2].G, impact.Object.Color.G, 0.1)),
-                math.floor(lerp(self.etc.rightColors[i+2].B, impact.Object.Color.B, 0.1))
+                math.floor(lerp(self.etc.rightColors[i+2].R, impact.Object.Color.R, 0.02)),
+                math.floor(lerp(self.etc.rightColors[i+2].G, impact.Object.Color.G, 0.02)),
+                math.floor(lerp(self.etc.rightColors[i+2].B, impact.Object.Color.B, 0.02))
             )
         end
     end
