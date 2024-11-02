@@ -121,6 +121,9 @@ map.create_object = function(self, object, config)
         OBJ_cost = config.cost
     end
 
+    obj.action = object.action
+    obj.remove = object.remove
+
     obj.shape = Shape(object.shape)
     obj.shape:SetParent(World)
     obj.shape.Position = Number3(config.position[1]+0.5, 0, config.position[2]+0.5)*16 + Number3(0, -32, 0)
