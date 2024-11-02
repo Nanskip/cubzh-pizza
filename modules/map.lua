@@ -123,6 +123,7 @@ map.create_object = function(self, object, config)
 
     obj.action = object.action
     obj.remove = object.remove
+    obj.name = object.name
 
     obj.shape = Shape(object.shape)
     obj.shape:SetParent(World)
