@@ -40,7 +40,7 @@ function interface.CREATE(self)
     self.money.frame = ui:createFrame()
     self.money.frame.Color = Color(255, 255, 255)
     self.money.text = ui:createText("")
-    self.money.text.Color = Color(232, 94, 2)
+    self.money.text.Color = Color(36, 16, 2)
 
     self:UPDATE()
 end
@@ -58,9 +58,9 @@ function interface.UPDATE(self)
     end
 
     self.money.text.Text = "$" .. _MONEY
-    self.money.frame.Width, self.money.frame.Height = self.money.text.Width + 10, self.money.text.Height + 10
-    self.money.text.pos = Number2(Screen.Width - self.money.frame.Width - 5, Screen.Height - self.money.frame.Height - 5 - Screen.SafeArea.Top)
-    self.money.frame.pos = Number2(Screen.Width - self.money.frame.Width - 10, Screen.Height - self.money.frame.Height - 10 - Screen.SafeArea.Top)
+    self.money.frame.Width, self.money.frame.Height = self.money.text.Width + 20, self.money.text.Height + 10
+    self.money.text.pos = Number2(Screen.Width - self.money.frame.Width - 5 - self.etc.screen_right.Width, Screen.Height - self.money.frame.Height - 5 - Screen.SafeArea.Top)
+    self.money.frame.pos = Number2(Screen.Width - self.money.frame.Width - 20, Screen.Height - self.money.frame.Height - 10 - Screen.SafeArea.Top)
 end
 
 function interface.UPDATE_SIDES(self)
