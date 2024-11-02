@@ -11,6 +11,9 @@ function interface.CREATE(self)
     Camera.FOV = 30
     Screen.DidResize = function()
         self:UPDATE()
+        Timer(0.02, false, function()
+            self:UPDATE()
+        end)
     end
 
     self.etc = {}
