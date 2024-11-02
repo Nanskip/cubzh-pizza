@@ -10,7 +10,21 @@ map.objects = {
         cost = 50,
         shape = Items.voxels.toxic_barrel,
         action = function(self)
-            log("Test Object triggered!")
+            log(self.name .. "Object triggered!")
+        end,
+        remove = function(self)
+            log(self.name .. " Object removed!")
+        end
+    },
+    checkout = {
+        name = "Checkout",
+        cost = 100,
+        shape = Items.voxels.checkout_counter,
+        action = function(self)
+            log(self.name .. "Object triggered!")
+        end,
+        remove = function(self)
+            log(self.name .. " Object removed!")
         end
     }
 }
@@ -193,6 +207,8 @@ map.create_object = function(self, object, config)
                 self.cost.coin = nil
                 self.cost.num = nil
                 self.cost = nil
+
+                self:action()
             end)
         end
         self.purchased = true

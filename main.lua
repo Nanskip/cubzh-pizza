@@ -2,13 +2,15 @@ Config = {
     Map = nil,
     Items = {
         "voxels.oak_floor", "voxels.toxic_barrel", "voxels.pezh_coin",
+        "pratamacam.checkout_counter",
+        "chocomatte.cash_register02",
         "nanskip.joystick_v2", "nanskip.joystick_stick_v2",
     }
 }
 
 function Client.OnStart()
     _DEBUG = true
-    _HASH = "71ead28"
+    _HASH = "1ee8614"
     _LATEST_LINK = "https://raw.githubusercontent.com/Nanskip/cubzh-pizza/" .. _HASH .. "/"
     _LOGS = {}
 
