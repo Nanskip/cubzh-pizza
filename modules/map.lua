@@ -163,6 +163,7 @@ map.create_object = function(self, object, config)
                     self.addedMoney = lerp(self.addedMoney, self.cost.num, 0.1)
                     self.cost.bar.Scale.X = lerp(self.cost.bar.Scale.X, 0.7*16, 0.1)
                     self.cost.text.Text = math.round(self.addedMoney) .."/"..object.cost
+                    self.cost.coin.Scale.X = lerp(self.cost.coin.Scale.X, 1*16, 0.05)
                 end)
 
                 Timer(0.016*i+1, false, function()
@@ -171,6 +172,7 @@ map.create_object = function(self, object, config)
                     self.button.Color.A = math.floor(lerp(self.button.Color.A, 0, 0.04))
                     self.cost.text.Color.A = math.floor(lerp(self.cost.text.Color.A, 0, 0.04))
                     self.cost.coin.Position.Y = lerp(self.cost.coin.Position.Y, -32, 0.05)
+                    self.cost.bar.Color = Color(107, 255, 99, math.floor(lerp(self.cost.bar.Color.A, 0, 0.04)))
                 end)
             end
             Timer(2.01, false, function()
